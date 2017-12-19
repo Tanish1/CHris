@@ -1,1 +1,1 @@
-print('Im better than Tanish')
+print('Im better than Tanishh')
