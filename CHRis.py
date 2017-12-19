@@ -1,1 +1,1 @@
-print('Im better than Tanishh')
+print('CHris sucks!!!!')
