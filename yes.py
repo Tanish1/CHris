@@ -1,4 +1,17 @@
 # Midyear project
+
+""" 
+alrighty so the rules of the game:
+a crime went down and the player gotta solve it
+1. the player gotta pick a character
+2. they gotta enter the room
+3. now they see if there are clues
+4. ask if they can remove anyone from the suspect list
+5. if yes, well remove the suspect. if they remove the guilty person they lose and game over. otherwise, well i guess they got closer to figuring it out.
+6. ask if they know who did it for sure. if they get it right, they win. if not, they lose and game over. they can only guess once.
+then u just sorta repeat all that till the game is over.
+"""
+
 import random
 suspects = ("Tanish", "Chris", "Melissa", "Mr. Isecke", "Suspect 5", "Suspect 6")
 rooms = ("The Compsci Room", "Lower Caf", "Upper Caf", "The gym", "The grill", "The breezeway", "Mr. Zhang's room", "Mr. Demeter's room", "Ms. Fillebrown's room")
@@ -19,15 +32,16 @@ def clues():
     will that be too hard to do tho?
     because i dont see how the clues would work otherwise
     """
+    
     suspect = random.choice(suspects)
     if suspect == "Tanish":
-        clues = ("")
+        clues = {"Clue 1": "", "Clue 2": "", "Clue 3": ""}
     if suspect == "Chris":
-        clues = ()
+        clues = {"Clue 1": "", "Clue 2": "", "Clue 3": ""}
     if suspect == "Melissa":
-        clues = ()
+        clues = {"Clue 1": "", "Clue 2": "", "Clue 3": ""}
     if suspect == "Mr. Isecke":
-        clues = ()
+        clues = {"Clue 1": "", "Clue 2": "", "Clue 3": ""}
 
 
 def room_choice():
@@ -39,9 +53,14 @@ def room_choice():
     room_choice3 = random.choice(rooms)
     if room_choice3 == room_choice1 or room_choice3 == room_choice2:
         room_choice3 = random.choice(rooms)
+        
+    """
+    now what we could also do is remove the room from the list so that it cant be picked again
+    but we would need a second list bc you want all the rooms later on
+    """
 
 
-def main():
+def gameplay():
     print("Welcome to Clue! In this game, you'll have to help Mr. Respass figure out who took his computer."
           "\nA list of suspects has already been made. But first of all, who are you? "
           "\nTo select a character, type in its number.")
@@ -55,15 +74,5 @@ def main():
     # ok so this part doesn't work because it gives you the number of the character chosen, not the name
     print("Hello, %s. Think you can solve the mystery of who took Mr. Respass' computer?" % char_choice)
 
-    """ 
-    alrighty now heres whats going to happen after this:
-    1. they gotta enter the room
-    2. they gotta see if there are clues
-    3. ask if they can remove anyone from the suspect list
-    4. if yes, well remove the suspect. if they remove the guilty person they lose and game over. otherwise, well i guess they got closer to figuring it out.
-    5. ask if they know who did it for sure. if they get it right, they win. if not, they lose and game over.
-    then u just sorta repeat all that till the game is over.
-    """
 
-
-main()
+gameplay()
