@@ -14,10 +14,14 @@ class Application(Frame):
         self.next_bttn = Button(self, text="Next", command=self.page_two)
         self.next_bttn.grid(row=1, column=1)
 
+
     def page_two(self):
         self.label["text"]= "IT WORKED"
         self.next_bttn.destroy()
-        wSDQW
+        imageSmall = PhotoImage(file="Picture.gif")
+        w = Label(self, image=imageSmall)
+        w.photo = imageSmall
+        w.grid(row=5, column=1)
 
 
 root = Tk()
