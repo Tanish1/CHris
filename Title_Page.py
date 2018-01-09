@@ -17,6 +17,7 @@ class Application(Frame):
     def page_two(self):
         self.label["text"]= "IT WORKED"
         self.next_bttn.destroy()
+        wSDQW
 
 
 root = Tk()
