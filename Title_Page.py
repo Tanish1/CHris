@@ -11,7 +11,7 @@ class Application(Frame):
         self.label = Label(text="Welcome to  Chutes and Ladders!")
         self.label.grid(row = 2, column = 2)
 
-        self.next_bttn = Button(self, text="Next", command=self.page_two)
+        self.next_bttn = Button(self, text="Next", command=self.page_three)
         self.next_bttn.grid(row=1, column=1)
 
 
@@ -21,8 +21,13 @@ class Application(Frame):
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=5, column=1)
-    def board
 
+
+
+    def board_spaces(self):
+        user_space = 0
+        second_user_space = 0
+        #dictionary
 root = Tk()
 app = Application(root)
 root.geometry("400x600")
