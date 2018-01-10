@@ -17,7 +17,7 @@ class Application(Frame):
 
     def page_two(self):
         self.next_bttn.destroy()
-        imageSmall = PhotoImage(file="Board.gif")
+        imageSmall = PhotoImage(file="Board.JPG")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=5, column=1)
