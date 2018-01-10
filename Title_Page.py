@@ -16,15 +16,14 @@ class Application(Frame):
 
 
     def page_two(self):
-        self.label["text"]= "IT WORKED"
         self.next_bttn.destroy()
         imageSmall = PhotoImage(file="Board.gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=5, column=1)
+    def board
 
 root = Tk()
 app = Application(root)
 root.geometry("400x600")
 root.mainloop()
-a
