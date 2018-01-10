@@ -1,5 +1,5 @@
 from tkinter import *
-
+import random
 
 class Application(Frame):
     def __init__(self, master):
@@ -14,20 +14,25 @@ class Application(Frame):
         self.next_bttn = Button(self, text="Next", command=self.page_three)
         self.next_bttn.grid(row=1, column=1)
 
-
-    def page_two(self):
+    def page_three(self):
         self.next_bttn.destroy()
         imageSmall = PhotoImage(file="Board.JPG")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=5, column=1)
 
+    def dice_roll_number(self):
+        dice_roll = random.randint(1,7)
+
+    def dice(self):
+        imageSmall = PhotoImage(file="Dice"+ str(self.dice_roll_number) +".gif")
+        w = Label(self, image=imageSmall)
+        w.photo = imageSmall
+        w.grid(row=5, column=1)
 
 
-    def board_spaces(self):
-        user_space = 0
-        second_user_space = 0
-        #dictionary
+
+
 root = Tk()
 app = Application(root)
 root.geometry("400x600")
