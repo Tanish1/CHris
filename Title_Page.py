@@ -37,9 +37,6 @@ class Application(Frame):
         w.photo = imageSmall
         w.grid(row=5, column=1)
 
-
-
-
 root = Tk()
 app = Application(root)
 root.geometry("400x600")
