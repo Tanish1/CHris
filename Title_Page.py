@@ -1,7 +1,6 @@
 from tkinter import *
 import random
-import  PIL
-from PIL import Image
+
 
 class Application(Frame):
     def __init__(self, master):
@@ -22,7 +21,7 @@ class Application(Frame):
         self.label.destroy()
         self.roll_button = Button(self, text = "Roll",command = self.dice_roll_number)
         self.roll_button.grid(row=6, column = 4)
-        imageSmall = PhotoImage(file="Photos/Board.jpg")
+        imageSmall = PhotoImage(file="Photos/Board.gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=5, column=1, columnspan = 8)
@@ -92,5 +91,5 @@ class cell(object):
 
 root = Tk()
 app = Application(root)
-root.geometry("400x600")
+root.geometry("415x600")
 root.mainloop()
