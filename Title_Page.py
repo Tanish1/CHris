@@ -77,6 +77,7 @@ class Application(Frame):
         self.board[95].jumpto = 75
         self.board[98].jump = True
         self.board[98].jumpto = 78
+        #ed
 
 
 class cell(object):
