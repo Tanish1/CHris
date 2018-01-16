@@ -21,10 +21,15 @@ class Application(Frame):
         self.label.destroy()
         self.roll_button = Button(self, text = "Roll",command = self.dice_roll_number)
         self.roll_button.grid(row=6, column = 4)
-        imageSmall = PhotoImage(file="Board.jpg")
+        imageSmall = PhotoImage(file="Photos/Board.jpg")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=5, column=1, columnspan = 8)
+
+        imageSmall = PhotoImage(file="Photos/Blue.png")
+        w = Label(self, image=imageSmall)
+        w.photo = imageSmall
+        w.grid(row=100, column=1, columnspan=3)
 
         self.rolled_number = Label(self, text = "")
         self.rolled_number.grid(row = 7, column = 4)
@@ -32,10 +37,10 @@ class Application(Frame):
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
         self.rolled_number["text"] = "You rolled a " + str(dice_roll)
-        imageSmall = PhotoImage(file="Photos/ Dice"+ str(dice_roll) +".jpg")
+        imageSmall = PhotoImage(file="Photos/Dice"+ str(dice_roll) +".gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
-        w.grid(row=8, column=2)
+        w.grid(row=8, column=1, columnspan = 3)
 
     def init_board(self):
         board = []
@@ -88,4 +93,3 @@ root = Tk()
 app = Application(root)
 root.geometry("400x600")
 root.mainloop()
-ds
