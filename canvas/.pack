@@ -1,0 +1,25 @@
+
+"""
+Canvas: displays pictures
+to display things, create canvas items, which are placed in a stack.
+item handles: identify something on a canvas, integer value
+tags: strings that identify something
+.gettags(item) gets you all the tags
+find_withtag("tag") gives you all the items with that tag
+addtag((the tag to add), (how the tag is being added), (additional arguments)) adds a tag
+ways to add tags: "above", "all", "below", "closest", "enclosed", "overlapping", "withtag", ""
+addtag_above((the tag to add), (the tag or id of the reference item)) adds tag to item above given item
+addtag_below(tag, item) adds tag below given item
+bd= width of canvas border (default: 0)
+.coords returns coordinates for item
+"""
+
+"""
+.pack:
+side= tells which side to pack the widget against (top, bottom, left, right)
+fill= tells how to fill the space (both, x, y)
+expand= says to give the widget extra space (True, False)
+"""
+
+#self.winfo_width and self.winfo_height give the height and width of the window
+
