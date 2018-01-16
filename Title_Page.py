@@ -1,6 +1,7 @@
 from tkinter import *
 import random
-
+import PIL
+from PIL import Image
 
 class Application(Frame):
     def __init__(self, master):
@@ -83,6 +84,12 @@ class Application(Frame):
 class cell(object):
     def __init__(self):
         self.jump  = False
+
+
+blackground = Image.open("Photos/Board.gif")
+blue = Image.open("Photos/Blue.png")
+red = Image.open("Photos/Red.png")
+
 
 
 root = Tk()
