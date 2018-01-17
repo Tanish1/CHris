@@ -34,6 +34,7 @@ class Application(Frame):
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
         self.var += dice_roll
+        print(int(self.var))
         self.rolled_number["text"] = "You rolled a " + str(dice_roll)
         imageSmall = PhotoImage(file="Photos/Dice" + str(dice_roll) +".gif")
         w = Label(self, image=imageSmall)
@@ -87,7 +88,6 @@ class Application(Frame):
         if self.board[self.var].jump == True:
             self.board[self.var] = self.board[self.var].jumpto
 
-        print(self.var)
 class cell(object):
     def __init__(self):
         self.jump  = False
