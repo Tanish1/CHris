@@ -86,9 +86,25 @@ class cell(object):
         self.jump  = False
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 blackground = Image.open("Photos/Board.gif")
 blue = Image.open("Photos/Blue.png")
 red = Image.open("Photos/Red.png")
+
+
 
 
 
