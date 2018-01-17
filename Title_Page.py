@@ -83,7 +83,9 @@ class Application(Frame):
 
 class cell(object):
     def __init__(self):
-        self.jump  = False
+        self.jump = False
+        if self.jump == True:
+            self.jumpto = self.board[]
 
 
 
