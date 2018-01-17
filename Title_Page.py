@@ -3,6 +3,7 @@ import random
 import PIL
 from PIL import Image
 
+
 class Application(Frame):
     def __init__(self, master):
         super(Application,self).__init__(master)
@@ -87,12 +88,46 @@ class Application(Frame):
         self.player_pos = self.board[self.var]
         if self.board[self.var].jump == True:
             self.board[self.var] = self.board[self.var].jumpto
+        if self.player_pos == 1:
+            self.player_pos = 38
+        if self.player_pos == 4:
+            self.player_pos = 14
+        if self.player_pos == 9:
+            self.player_pos = 31
+        if self.player_pos == 16:
+            self.player_pos = 6
+        if self.player_pos == 21:
+            self.player_pos = 42
+        if self.player_pos == 36:
+            self.player_pos = 44
+        if self.player_pos == 47:
+            self.player_pos = 26
+        if self.player_pos == 49:
+            self.player_pos = 11
+        if self.player_pos == 51:
+            self.player_pos = 67
+        if self.player_pos == 56:
+            self.player_pos = 53
+        if self.player_pos == 62:
+            self.player_pos = 19
+        if self.player_pos == 64:
+            self.player_pos = 60
+        if self.player_pos == 71:
+            self.player_pos = 91
+        if self.player_pos == 80:
+            self.player_pos = 100
+        if self.player_pos == 87:
+            self.player_pos = 24
+        if self.player_pos == 93:
+            self.player_pos = 73
+        if self.player_pos == 95:
+            self.player_pos = 75
+        if self.player_pos == 98:
+            self.player_pos = 78
 
 class cell(object):
     def __init__(self):
         self.jump = False
-        if self.jump == True:
-            self.jumpto = self.board[]
 
 
 blackground = Image.open("Photos/Board.gif")
