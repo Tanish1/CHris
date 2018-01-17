@@ -130,10 +130,10 @@ class cell(object):
         self.jump = False
 
 
-blackground = Image.open("Photos/Board.gif")
-blue = Image.open("Photos/Blue.png")
-red = Image.open("Photos/Red.png")
- #comment
+blackground = Image.open("Photos/Board.gif", "r")
+blue = Image.open("Photos/Blue.png", "r")
+red = Image.open("Photos/Red.png", "r")
+
 
 
 
