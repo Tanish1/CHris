@@ -133,7 +133,7 @@ class cell(object):
 blackground = Image.open("Photos/Board.gif")
 blue = Image.open("Photos/Blue.png")
 red = Image.open("Photos/Red.png")
-
+ #comment
 
 
 
