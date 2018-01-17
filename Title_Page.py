@@ -9,6 +9,7 @@ class Application(Frame):
         self.grid()
         self.create_widgets_page_one()
         self.rolled_number = Label(self, text="")
+        self.var = 0
 
     def create_widgets_page_one(self):
         self.label = Label(text="Welcome to  Chutes and Ladders!")
@@ -32,11 +33,13 @@ class Application(Frame):
 
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
+        self.var += dice_roll
         self.rolled_number["text"] = "You rolled a " + str(dice_roll)
         imageSmall = PhotoImage(file="Photos/Dice" + str(dice_roll) +".gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=8, column=2)
+
 
     def init_board(self):
         self.board = []
@@ -78,26 +81,16 @@ class Application(Frame):
         self.board[95].jumpto = 75
         self.board[98].jump = True
         self.board[98].jumpto = 78
-        #ed
 
+    def move_player(self):
+        self.player_pos = self.board[self.var]
+        if self.board[self.var].jump == True:
+            self.board[self.var] = self.board[self.var].jumpto
 
+        print(self.var)
 class cell(object):
     def __init__(self):
         self.jump  = False
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 blackground = Image.open("Photos/Board.gif")
