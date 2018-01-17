@@ -124,7 +124,7 @@ class Application(Frame):
             self.player_pos = 75
         if self.player_pos == 98:
             self.player_pos = 78
-
+#comment
 class cell(object):
     def __init__(self):
         self.jump = False
