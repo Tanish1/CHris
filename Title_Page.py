@@ -35,63 +35,25 @@ class Application(Frame):
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
         self.var += dice_roll
-        print(int(self.var))
+        self.move_player()
+        print(self.player_pos)
         self.rolled_number["text"] = "You rolled a " + str(dice_roll)
         imageSmall = PhotoImage(file="Photos/Dice" + str(dice_roll) +".gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=8, column=2)
 
-
-    def init_board(self):
+    def move_player(self):
         self.board = []
         for i in range(100):
             self.board.append(cell())
-        self.board[1].jump = True
-        self.board[1].jumpto = 38
-        self.board[4].jump = True
-        self.board[4].jumpto = 14
-        self.board[9].jump = True
-        self.board[9].jumpto = 31
-        self.board[16].jump = True
-        self.board[16].jumpto = 6
-        self.board[21].jump = True
-        self.board[21].jumpto = 42
-        self.board[36].jump = True
-        self.board[36].jumpto = 44
-        self.board[47].jump = True
-        self.board[47].jumpto = 26
-        self.board[49].jump = True
-        self.board[49].jumpto = 11
-        self.board[51].jump = True
-        self.board[51].jumpto = 67
-        self.board[56].jump = True
-        self.board[56].jumpto = 53
-        self.board[62].jump = True
-        self.board[62].jumpto = 19
-        self.board[64].jump = True
-        self.board[64].jumpto = 60
-        self.board[71].jump = True
-        self.board[71].jumpto = 91
-        self.board[80].jump = True
-        self.board[80].jumpto = 100
-        self.board[87].jump = True
-        self.board[87].jumpto = 24
-        self.board[93].jump = True
-        self.board[93].jumpto = 73
-        self.board[95].jump = True
-        self.board[95].jumpto = 75
-        self.board[98].jump = True
-        self.board[98].jumpto = 78
-
-    def move_player(self):
-        self.player_pos = self.board[self.var]
-        if self.board[self.var].jump == True:
-            self.board[self.var] = self.board[self.var].jumpto
+        self.player_pos = self.var
         if self.player_pos == 1:
             self.player_pos = 38
+            self.var = self.player_pos
         if self.player_pos == 4:
             self.player_pos = 14
+            self.var = self.player_pos
         if self.player_pos == 9:
             self.player_pos = 31
         if self.player_pos == 16:
@@ -125,9 +87,11 @@ class Application(Frame):
         if self.player_pos == 98:
             self.player_pos = 78
 #comment
+            self.var = self.board[self.var].jumpto
+
 class cell(object):
     def __init__(self):
-        self.jump = False
+        self.jump  = False
 
 
 blackground = Image.open("Photos/Board.gif", "r")
