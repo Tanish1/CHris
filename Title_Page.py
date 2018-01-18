@@ -1,7 +1,6 @@
 from tkinter import *
 import random
-import PIL
-from PIL import Image
+from PIL import Image, ImageTk
 
 class Application(Frame):
     def __init__(self, master):
@@ -23,10 +22,17 @@ class Application(Frame):
         self.label.destroy()
         self.roll_button = Button(self, text = "Roll",command = self.dice_roll_number)
         self.roll_button.grid(row=6, column = 4)
-        imageSmall = PhotoImage(file="Board.jpg")
-        w = Label(self, image=imageSmall)
-        w.photo = imageSmall
-        w.grid(row=5, column=1, columnspan = 8)
+
+        head = Image.open('Photos/Board.gif')
+        hand = Image.open('Blue.png')
+
+        head.paste(hand, (5, 5), hand)
+
+        # Convert the Image object into a TkPhoto object
+        tkimage = ImageTk.PhotoImage(head)
+        panel1 = Label(self, image=tkimage)
+        panel1.photo = tkimage
+        panel1.grid(row=16, column=2, sticky=E)
 
         self.rolled_number = Label(self, text = "")
         self.rolled_number.grid(row = 7, column = 4)
@@ -91,11 +97,6 @@ class Application(Frame):
 class cell(object):
     def __init__(self):
         self.jump  = False
-
-
-blackground = Image.open("Photos/Board.gif", "r")
-blue = Image.open("Photos/Blue.png", "r")
-red = Image.open("Photos/Red.png", "r")
 
 
 
