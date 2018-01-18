@@ -8,7 +8,8 @@ class Application(Frame):
         self.grid()
         self.create_widgets_page_one()
         self.rolled_number = Label(self, text="")
-        self.var = 0
+        self.var1 = 0
+        self.var2 = 0
 
     def create_widgets_page_one(self):
         self.label = Label(text="Welcome to  Chutes and Ladders!")
@@ -35,72 +36,91 @@ class Application(Frame):
         panel1.grid(row=16, column=2, sticky=E)
 
         self.rolled_number = Label(self, text = "")
-        self.rolled_number.grid(row = 7, column = 4)
+        self.rolled_number.grid(row = 8, column = 4)
+
+        self.player1_space = Label(self, text = "")
+        self.player1_space.grid(row = 9, column = 4)
+
+        self.winner = Label (self, text = "")
+        self.winner.grid(row = 10, column = 4)
 
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
-        self.var += dice_roll
-        print(int(self.var))
+        self.var1 += dice_roll
+        self.move_player()
+        print(self.player1_pos)
         self.rolled_number["text"] = "You rolled a " + str(dice_roll)
+        self.player1_space["text"] = "You're at space " + str(self.var1)
         imageSmall = PhotoImage(file="Photos/Dice" + str(dice_roll) +".gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
-        w.grid(row=8, column=2)
+        w.grid(row=8, column=2, rowspan = 4)
+        if self.var1 >= 100 or self.var2 >= 100:
+            self.winner["text"] = "Congrats you won!"
 
-
-    def init_board(self):
+    def move_player(self):
         self.board = []
         for i in range(100):
             self.board.append(cell())
-        self.board[1].jump = True
-        self.board[1].jumpto = 38
-        self.board[4].jump = True
-        self.board[4].jumpto = 14
-        self.board[9].jump = True
-        self.board[9].jumpto = 31
-        self.board[16].jump = True
-        self.board[16].jumpto = 6
-        self.board[21].jump = True
-        self.board[21].jumpto = 42
-        self.board[36].jump = True
-        self.board[36].jumpto = 44
-        self.board[47].jump = True
-        self.board[47].jumpto = 26
-        self.board[49].jump = True
-        self.board[49].jumpto = 11
-        self.board[51].jump = True
-        self.board[51].jumpto = 67
-        self.board[56].jump = True
-        self.board[56].jumpto = 53
-        self.board[62].jump = True
-        self.board[62].jumpto = 19
-        self.board[64].jump = True
-        self.board[64].jumpto = 60
-        self.board[71].jump = True
-        self.board[71].jumpto = 91
-        self.board[80].jump = True
-        self.board[80].jumpto = 100
-        self.board[87].jump = True
-        self.board[87].jumpto = 24
-        self.board[93].jump = True
-        self.board[93].jumpto = 73
-        self.board[95].jump = True
-        self.board[95].jumpto = 75
-        self.board[98].jump = True
-        self.board[98].jumpto = 78
-
-    def move_player(self):
-        self.player_pos = self.board[self.var]
-        if self.board[self.var].jump == True:
-            self.board[self.var] = self.board[self.var].jumpto
+        self.player1_pos = self.var1
+        if self.player1_pos == 1:
+            self.player1_pos = 38
+            self.var1 = self.player1_pos
+        if self.player1_pos == 4:
+            self.player1_pos = 14
+            self.var1 = self.player1_pos
+        if self.player1_pos == 9:
+            self.player1_pos = 31
+            self.var1 = self.player1_pos
+        if self.player1_pos == 16:
+            self.player1_pos = 6
+            self.var1 = self.player1_pos
+        if self.player1_pos == 21:
+            self.player1_pos = 42
+            self.var1 = self.player1_pos
+        if self.player1_pos == 36:
+            self.player1_pos = 44
+            self.var1 = self.player1_pos
+        if self.player1_pos == 47:
+            self.player1_pos = 26
+            self.var1 = self.player1_pos
+        if self.player1_pos == 49:
+            self.player1_pos = 11
+            self.var1 = self.player1_pos
+        if self.player1_pos == 51:
+            self.player1_pos = 67
+            self.var1 = self.player1_pos
+        if self.player1_pos == 56:
+            self.player1_pos = 53
+            self.var1 = self.player1_pos
+        if self.player1_pos == 62:
+            self.player1_pos = 19
+            self.var1 = self.player1_pos
+        if self.player1_pos == 64:
+            self.player1_pos = 60
+            self.var1 = self.player1_pos
+        if self.player1_pos == 71:
+            self.player1_pos = 91
+            self.var1 = self.player1_pos
+        if self.player1_pos == 80:
+            self.player1_pos = 100
+            self.var1 = self.player1_pos
+        if self.player1_pos == 87:
+            self.player1_pos = 24
+            self.var1 = self.player1_pos
+        if self.player1_pos == 93:
+            self.player1_pos = 73
+            self.var1 = self.player1_pos
+        if self.player1_pos == 95:
+            self.player1_pos = 75
+            self.var1 = self.player1_pos
+        if self.player1_pos == 98:
+            self.player1_pos = 78
+            self.var1 = self.player1_pos
 
 class cell(object):
     def __init__(self):
         self.jump  = False
-
-
-
-
 
 root = Tk()
 app = Application(root)
