@@ -30,8 +30,7 @@ class Application(Frame):
         w.grid(row=5, column=1, columnspan = 8)
 
         self.rolled_number = Label(self, text = "")
-        self.rolled_number.grid(row = 8, column = 4)
-        self.
+        self.rolled_number.grid(row = 7, column = 4)
 
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
@@ -105,9 +104,19 @@ class Application(Frame):
             self.player_pos = 78
             self.var = self.player_pos
 
+
 class cell(object):
     def __init__(self):
-        self.jump  = False
+        self.jump = False
+
+
+blackground = Image.open("Photos/Board.gif", "r")
+blue = Image.open("Photos/Blue.png", "r")
+red = Image.open("Photos/Red.png", "r")
+
+
+
+
 
 root = Tk()
 app = Application(root)
