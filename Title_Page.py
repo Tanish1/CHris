@@ -27,7 +27,7 @@ class Application(Frame):
         head = Image.open('Photos/Board.gif')
         hand = Image.open('Blue.png')
 
-        head.paste(hand, (5, 5), hand)
+        head.paste(hand, (385, 385), hand)
 
         # Convert the Image object into a TkPhoto object
         tkimage = ImageTk.PhotoImage(head)
@@ -118,9 +118,31 @@ class Application(Frame):
             self.player1_pos = 78
             self.var1 = self.player1_pos
 
+
+    def ypos (self):
+        y_pos = (10 - self.player1_pos/10) * 38 + 2
+
+
+
+
 class cell(object):
     def __init__(self):
         self.jump  = False
+
+
+
+
+
+
+
+
+blackground = Image.open("Photos/Board.gif", "r")
+blue = Image.open("Photos/Blue.png", "r")
+red = Image.open("Photos/Red.png", "r")
+
+
+
+
 
 root = Tk()
 app = Application(root)
