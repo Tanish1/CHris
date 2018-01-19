@@ -1,6 +1,8 @@
 from tkinter import *
 import random
 from PIL import Image, ImageTk
+import sys
+
 
 class Application(Frame):
     def __init__(self, master):
@@ -10,6 +12,10 @@ class Application(Frame):
         self.rolled_number = Label(self, text="")
         self.var1 = 0
         self.var2 = 0
+        self.player1_x_value = 5
+        self.player1_y_value = 385
+        self.player2_x_value = -500
+        self.player2_y_value = 385
 
     def create_widgets_page_one(self):
         self.label = Label(text="Welcome to  Chutes and Ladders!")
@@ -21,19 +27,28 @@ class Application(Frame):
     def page_three(self):
         self.next_bttn.destroy()
         self.label.destroy()
-        self.roll_button = Button(self, text = "Roll",command = self.dice_roll_number)
+        self.roll_button = Button(self, text="Roll", command =self.dice_roll_number)
         self.roll_button.grid(row=6, column = 4)
 
         head = Image.open('Photos/Board.gif')
         hand = Image.open('Blue.png')
 
-        head.paste(hand, (385, 385), hand)
+        head.paste(hand, (5, 5), hand)
 
+        head.paste(hand, (self.player1_x_value, self.player1_y_value), hand)
+
+        second_hand.paste(second_hand, (self.player2_x_value, self.player2_y_value), second_hand)
         # Convert the Image object into a TkPhoto object
+
         tkimage = ImageTk.PhotoImage(head)
+        second_tkimage = ImageTk.PhotoImage(second_hand)
         panel1 = Label(self, image=tkimage)
         panel1.photo = tkimage
-        panel1.grid(row=16, column=2, sticky=E)
+        panel1.grid(row=1, column=2, sticky=E, columnspan = 8)
+
+        panel2 = Label(self, image=second_tkimage)
+        panel2.photo = second_tkimage
+        panel2.grid(row=1, column=1, sticky=E, columnspan=8)
 
         self.rolled_number = Label(self, text = "")
         self.rolled_number.grid(row = 8, column = 4)
@@ -56,6 +71,9 @@ class Application(Frame):
         w.photo = imageSmall
         w.grid(row=8, column=2, rowspan = 4)
         if self.var1 >= 100 or self.var2 >= 100:
+            self.var1 = 100
+            self.var2 = 100
+            self.player1_space["text"] = "You passed space " + str(self.var1)
             self.winner["text"] = "Congrats you won!"
 
     def move_player(self):
@@ -125,26 +143,12 @@ class Application(Frame):
 
 
 
+
 class cell(object):
     def __init__(self):
         self.jump  = False
 
-
-
-
-
-
-
-
-blackground = Image.open("Photos/Board.gif", "r")
-blue = Image.open("Photos/Blue.png", "r")
-red = Image.open("Photos/Red.png", "r")
-
-
-
-
-
 root = Tk()
 app = Application(root)
-root.geometry("400x600")
+root.geometry("415x600")
 root.mainloop()
