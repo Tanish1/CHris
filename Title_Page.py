@@ -21,12 +21,29 @@ class Application(Frame):
         self.label = Label(text="Welcome to  Chutes and Ladders!")
         self.label.grid(row = 2, column = 2)
 
-        self.next_bttn = Button(self, text="Next", command=self.page_three)
+        self.next_bttn = Button(self, text="Next", command=self.page_two)
         self.next_bttn.grid(row=1, column=1)
+
+    def page_two(self):
+        self.next_bttn["command"] = self.page_three
+        self.label["text"] = "Player 1: Pick one piece. Player two gets the unchosen one."
+        self.blue_piece = BooleanVar()
+        self.red_piece = BooleanVar()
+        Checkbutton(self, text="Blue piece", variable=self.blue_piece, command=self.pick_character).grid(row=3, column=1)
+        Checkbutton(self, text="Red piece", variable=self.red_piece, command=self.pick_character).grid(row=4, column=1)
+
+    def pick_character(self):
+        if self.blue_piece.get() is True:
+            print()
+        if self.red_piece.get() is True:
+            print()
+        if self.blue_piece.get()is True and self.red_piece.get() is True:
+            self.next_bttn["command"] = self.page_three
+            self.label["text"]="Choose only one piece."
 
     def page_three(self):
         self.next_bttn.destroy()
-        self.label.destroy()
+
         self.roll_button = Button(self, text="Roll", command =self.dice_roll_number)
         self.roll_button.grid(row=6, column = 4)
 
@@ -51,14 +68,14 @@ class Application(Frame):
         panel2.photo = second_tkimage
         panel2.grid(row=1, column=1, sticky=E, columnspan=8)
 
-        self.rolled_number = Label(self, text = "")
-        self.rolled_number.grid(row = 8, column = 4)
+        self.rolled_number = Label(self, text="")
+        self.rolled_number.grid(row=8, column=4)
 
         self.player1_space = Label(self, text = "")
-        self.player1_space.grid(row = 9, column = 4)
+        self.player1_space.grid(row=9, column=4)
 
-        self.winner = Label (self, text = "")
-        self.winner.grid(row = 10, column = 4)
+        self.winner = Label (self, text="")
+        self.winner.grid(row=10, column=4)
 
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
@@ -146,10 +163,6 @@ class cell(object):
 blackground = Image.open("Photos/Board.gif", "r")
 blue = Image.open("Photos/Blue.png", "r")
 red = Image.open("Photos/Red.png", "r")
-
-
-
-
 
 
 root = Tk()
