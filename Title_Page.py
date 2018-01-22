@@ -32,11 +32,11 @@ class Application(Frame):
         self.player_label.grid(row=2, column=1)
 
         self.blue_piece = BooleanVar()
-        self.blue_bttn = Checkbutton(self, text="Blue piece", variable=self.blue_piece, fg="blue")
+        self.blue_bttn = Radiobutton(self, text="Blue piece", variable=self.blue_piece, fg="blue")
         self.blue_bttn.grid(row=3, column=1)
 
         self.red_piece = BooleanVar()
-        self.red_bttn = Checkbutton(self, text="Red piece", variable=self.red_piece, fg="red")
+        self.red_bttn = Radiobutton(self, text="Red piece", variable=self.red_piece, fg="red")
         self.red_bttn.grid(row=4, column=1)
 
         if self.blue_piece.get() is True:
@@ -45,9 +45,6 @@ class Application(Frame):
         if self.red_piece.get() is True:
             print()
             # make the first player equal to the red piece
-        if self.blue_piece.get() is True and self.red_piece.get() is True:
-            self.next_bttn["command"] = self.page_three
-            self.label["text"] = "Choose only one piece."
 
     def page_three(self):
         self.next_bttn.destroy()
