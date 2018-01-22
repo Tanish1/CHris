@@ -176,11 +176,6 @@ class cell(object):
     def __init__(self):
         self.jump = False
 
-
-blackground = Image.open("Photos/Board.gif", "r")
-blue = Image.open("Photos/Blue.png", "r")
-red = Image.open("Photos/Red.png", "r")
-
 root = Tk()
 app = Application(root)
 root.geometry("415x600")
