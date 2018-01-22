@@ -1,7 +1,6 @@
 from tkinter import *
 import random
 from PIL import Image, ImageTk
-import sys
 
 
 class Application(Frame):
@@ -9,6 +8,7 @@ class Application(Frame):
         super(Application,self).__init__(master)
         self.grid()
         self.create_widgets_page_one()
+
         self.rolled_number = Label(self, text="")
         self.var1 = 0
         self.var2 = 0
@@ -18,17 +18,45 @@ class Application(Frame):
         self.player2_y_value = 385
 
     def create_widgets_page_one(self):
-        self.label = Label(text="Welcome to  Chutes and Ladders!")
-        self.label.grid(row = 2, column = 2)
+        self.label = Label(text="Welcome to  Chutes and Ladders!", font=("Times New Roman", 20))
+        self.label.grid(row=2, column=2)
 
-        self.next_bttn = Button(self, text="Next", command=self.page_three)
+        self.next_bttn = Button(self, text="Next", command=self.page_two)
         self.next_bttn.grid(row=1, column=1)
+
+    def page_two(self):
+        self.label.destroy()
+
+        self.next_bttn["command"] = self.page_three
+        self.player_label = Label(self, text="Player 1: Pick one piece. Player two gets the unchosen one.")
+        self.player_label.grid(row=2, column=1)
+
+        self.blue_piece = BooleanVar()
+        self.blue_bttn = Checkbutton(self, text="Blue piece", variable=self.blue_piece, fg="blue")
+        self.blue_bttn.grid(row=3, column=1)
+
+        self.red_piece = BooleanVar()
+        self.red_bttn = Checkbutton(self, text="Red piece", variable=self.red_piece, fg="red")
+        self.red_bttn.grid(row=4, column=1)
+
+        if self.blue_piece.get() is True:
+            print()
+            # make the first player equal to the blue piece
+        if self.red_piece.get() is True:
+            print()
+            # make the first player equal to the red piece
+        if self.blue_piece.get() is True and self.red_piece.get() is True:
+            self.next_bttn["command"] = self.page_three
+            self.label["text"] = "Choose only one piece."
 
     def page_three(self):
         self.next_bttn.destroy()
-        self.label.destroy()
-        self.roll_button = Button(self, text="Roll", command =self.dice_roll_number)
-        self.roll_button.grid(row=6, column = 4)
+        self.blue_bttn.destroy()
+        self.red_bttn.destroy()
+        self.player_label.destroy()
+
+        self.roll_button = Button(self, text="Roll", command=self.dice_roll_number)
+        self.roll_button.grid(row=6, column=4)
 
         head = Image.open('Photos/Board.gif')
         hand = Image.open('Blue.png')
@@ -50,14 +78,14 @@ class Application(Frame):
         panel2.photo = second_tkimage
         panel2.grid(row=1, column=1, sticky=E, columnspan=8)
 
-        self.rolled_number = Label(self, text = "")
-        self.rolled_number.grid(row = 8, column = 4)
+        self.rolled_number = Label(self, text="")
+        self.rolled_number.grid(row=8, column=4)
 
         self.player1_space = Label(self, text = "")
-        self.player1_space.grid(row = 9, column = 4)
+        self.player1_space.grid(row=9, column=4)
 
-        self.winner = Label (self, text = "")
-        self.winner.grid(row = 10, column = 4)
+        self.winner = Label (self, text="")
+        self.winner.grid(row=10, column=4)
 
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
@@ -66,7 +94,7 @@ class Application(Frame):
         print(self.player1_pos)
         self.rolled_number["text"] = "You rolled a " + str(dice_roll)
         self.player1_space["text"] = "You're at space " + str(self.var1)
-        imageSmall = PhotoImage(file="Photos/Dice" + str(dice_roll) +".gif")
+        imageSmall = PhotoImage(file="Photos/Dice" + str(dice_roll) + ".gif")
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=8, column=2, rowspan = 4)
@@ -146,7 +174,12 @@ class Application(Frame):
 
 class cell(object):
     def __init__(self):
-        self.jump  = False
+        self.jump = False
+
+
+blackground = Image.open("Photos/Board.gif", "r")
+blue = Image.open("Photos/Blue.png", "r")
+red = Image.open("Photos/Red.png", "r")
 
 root = Tk()
 app = Application(root)
