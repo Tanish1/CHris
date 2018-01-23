@@ -31,18 +31,17 @@ class Application(Frame):
         self.player_label = Label(self, text="Player 1: Pick one piece. Player two gets the unchosen one.")
         self.player_label.grid(row=2, column=1)
 
-        self.blue_piece = BooleanVar()
-        self.blue_bttn = Radiobutton(self, text="Blue piece", variable=self.blue_piece, fg="blue")
+        self.piece = StringVar()
+        self.piece.set(None)
+        self.blue_bttn = Radiobutton(self, text="Blue piece", variable=self.piece,value=1,  fg="blue")
         self.blue_bttn.grid(row=3, column=1)
-
-        self.red_piece = BooleanVar()
-        self.red_bttn = Radiobutton(self, text="Red piece", variable=self.red_piece, fg="red")
+        self.red_bttn = Radiobutton(self, text="Red piece", variable=self.piece,value=2, fg="red")
         self.red_bttn.grid(row=4, column=1)
 
-        if self.blue_piece.get() is True:
+        if self.piece.get() is 1:
             print()
             # make the first player equal to the blue piece
-        if self.red_piece.get() is True:
+        if self.piece.get() is 2:
             print()
             # make the first player equal to the red piece
 
