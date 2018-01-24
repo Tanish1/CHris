@@ -40,10 +40,8 @@ class Application(Frame):
 
         if self.piece.get() is 1:
             print()
-            # make the first player equal to the blue piece
         if self.piece.get() is 2:
             print()
-            # make the first player equal to the red piece
 
     def page_three(self):
         self.next_bttn.destroy()
