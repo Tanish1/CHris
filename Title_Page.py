@@ -1,7 +1,6 @@
 from tkinter import *
 import random
 from PIL import Image, ImageTk
-import sys
 
 
 class Application(Frame):
@@ -9,6 +8,7 @@ class Application(Frame):
         super(Application,self).__init__(master)
         self.grid()
         self.create_widgets_page_one()
+
         self.rolled_number = Label(self, text="")
         self.var1 = 0
         self.var2 = 0
@@ -242,15 +242,16 @@ class Application(Frame):
             self.var2 = self.player2_pos
 
 
+    def ypos (self):
+        y_pos = (10 - self.player1_pos/10) * 38 + 2
+
+
+
+
+
 class cell(object):
     def __init__(self):
         self.jump = False
-
-
-blackground = Image.open("Photos/Board.gif", "r")
-blue = Image.open("Photos/Blue.png", "r")
-red = Image.open("Photos/Red.png", "r")
-
 
 root = Tk()
 app = Application(root)
