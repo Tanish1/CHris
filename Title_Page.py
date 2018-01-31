@@ -14,7 +14,7 @@ class Application(Frame):
         self.var2 = 0
         self.player1_x_value = 5
         self.player1_y_value = 385
-        self.player2_x_value = -500
+        self.player2_x_value = 10
         self.player2_y_value = 385
         self.player_turn_var = 1
 
