@@ -22,36 +22,12 @@ class Application(Frame):
         self.label = Label(text="Welcome to Chutes and Ladders!", font=("Times New Roman", 20))
         self.label.grid(row=2, column=1, columnspan = 2)
 
-        self.next_bttn = Button(self, text="Next", command=self.page_two)
+        self.next_bttn = Button(self, text="Next", command=self.page_three)
         self.next_bttn.grid(row=1, column=1)
 
-    def page_two(self):
-        self.label.destroy()
-
-        self.next_bttn["command"] = self.page_three
-        self.player_label = Label(self, text="Player 1: Pick one piece. Player two gets the unchosen one.")
-        self.player_label.grid(row=2, column=1)
-
-        self.piece = StringVar()
-        self.piece.set(None)
-        self.blue_bttn = Radiobutton(self, text="Blue piece", variable=self.piece,value=1,  fg="blue")
-        self.blue_bttn.grid(row=3, column=1)
-        self.red_bttn = Radiobutton(self, text="Red piece", variable=self.piece,value=2, fg="red")
-        self.red_bttn.grid(row=4, column=1)
-
-        if self.piece.get() is 1:
-            print()
-            # make the first player equal to the blue piece
-        if self.piece.get() is 2:
-            print()
-            # make the first player equal to the red piece
-
     def page_three(self):
+        self.label.destroy()
         self.next_bttn.destroy()
-        self.blue_bttn.destroy()
-        self.red_bttn.destroy()
-        self.player_label.destroy()
-
         self.player_turn = Label(self, text="")
         self.player_turn.grid(row=7, column=4)
 
