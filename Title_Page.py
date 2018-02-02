@@ -12,11 +12,10 @@ class Application(Frame):
         self.rolled_number = Label(self, text="")
         self.var1 = 0
         self.var2 = 0
-        self.player1_x_value = 5
-        self.player1_y_value = 385
-        self.player2_x_value = 10
-        self.player2_y_value = 385
+
         self.player_turn_var = 1
+        self.player1_pos = 1
+        self.player2_pos = 1
 
     def create_widgets_page_one(self):
         self.label = Label(text="Welcome to Chutes and Ladders!", font=("Times New Roman", 20))
@@ -33,27 +32,51 @@ class Application(Frame):
 
         self.roll_button = Button(self, text="Roll", command=self.dice_roll_number)
         self.roll_button.grid(row=8, column=4)
+        self.drawBoard()
 
-        head = Image.open('Photos/Board.gif')
-        hand = Image.open('Blue.png')
 
-        second_hand = Image.open('Photos/Board.gif')
-        second_hand = Image.open('Blue.png')
 
-        head.paste(hand, (self.player1_x_value, self.player1_y_value), hand)
+    def drawBoard(self):
+        boardImage = Image.open('Photos/Board.gif')
+        player1Piece = Image.open('Blue.png')
+        player2Piece = Image.open('Red.png')
 
-        second_hand.paste(second_hand, (self.player2_x_value, self.player2_y_value), second_hand)
-        # Convert the Image object into a TkPhoto object
+        player1_y_value = int(int(10 - self.player1_pos / 10) * 42 + 1)
 
-        tkimage = ImageTk.PhotoImage(head)
-        second_tkimage = ImageTk.PhotoImage(second_hand)
+        player1_x_value = int(self.player1_pos % 20)
+        if (player1_x_value >= 10) and (player1_x_value <= 20):
+            player1_x_value = (20 - player1_x_value) * 40 + 20
+
+        else:
+            player1_x_value = self.player1_pos
+
+        print(player1_x_value)
+
+        boardImage.paste(player1Piece, (player1_x_value, player1_y_value), player1Piece)
+
+        player2_y_value = int(int(10 - self.player2_pos / 10) * 42 + 1)
+
+        player2_x_value = int(self.player2_pos % 20)
+        if (player2_x_value >= 10) and (player2_x_value <= 20):
+            player2_x_value = (20 - player2_x_value) * 38 + 20
+
+        else:
+            player2_x_value = self.player2_pos
+
+        print(player2_x_value)
+
+
+        boardImage.paste(player2Piece, (player2_x_value, player2_y_value), player2Piece)
+
+
+
+
+
+
+        tkimage = ImageTk.PhotoImage(boardImage)
         panel1 = Label(self, image=tkimage)
         panel1.photo = tkimage
         panel1.grid(row=1, column=2, sticky=E, columnspan = 8)
-
-        panel2 = Label(self, image=second_tkimage)
-        panel2.photo = second_tkimage
-        panel2.grid(row=1, column=1, sticky=E, columnspan=8)
 
         self.rolled_number = Label(self, text="")
         self.rolled_number.grid(row=9, column=4)
@@ -64,6 +87,8 @@ class Application(Frame):
         self.winner = Label (self, text="")
         self.winner.grid(row=11, column=4)
 
+        tkimage = ImageTk.PhotoImage(boardImage)
+
     def dice_roll_number(self):
         dice_roll = random.randint(1,6)
         if self.player_turn_var % 2 != 0:
@@ -72,6 +97,8 @@ class Application(Frame):
             self.var2 += dice_roll
 
         self.move_player()
+
+        self.drawBoard()
 
         if self.player_turn_var % 2 != 0:
             self.player_turn["text"] = "Player 1's Turn"
@@ -89,6 +116,8 @@ class Application(Frame):
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=8, column=2, rowspan = 4)
+
+
         if self.var1 >= 100 or self.var2 >= 100:
             self.var1 = 100
             self.var2 = 100
@@ -216,12 +245,6 @@ class Application(Frame):
         if self.player2_pos == 98:
             self.player2_pos = 78
             self.var2 = self.player2_pos
-
-
-    def ypos (self):
-        y_pos = (10 - self.player1_pos/10) * 38 + 2
-
-
 
 
 
