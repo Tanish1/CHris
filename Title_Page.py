@@ -65,7 +65,6 @@ class Application(Frame):
 
         print(player2_x_value)
 
-
         boardImage.paste(player2Piece, (player2_x_value, player2_y_value), player2Piece)
 
 
