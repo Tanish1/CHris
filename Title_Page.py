@@ -47,6 +47,9 @@ class Application(Frame):
         if (player1_x_value >= 10) and (player1_x_value <= 20):
             player1_x_value = (20 - player1_x_value) * 40 + 20
 
+        elif (player1_x_value < 10):
+            player1_x_value = player1_x_value * 40 + 20
+
         else:
             player1_x_value = self.player1_pos
 
@@ -59,6 +62,9 @@ class Application(Frame):
         player2_x_value = int(self.player2_pos % 20)
         if (player2_x_value >= 10) and (player2_x_value <= 20):
             player2_x_value = (20 - player2_x_value) * 38 + 20
+
+        elif (player2_x_value < 10):
+            player2_x_value = player2_x_value * 40 + 20
 
         else:
             player2_x_value = self.player2_pos
