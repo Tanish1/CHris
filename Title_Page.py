@@ -34,21 +34,19 @@ class Application(Frame):
         self.roll_button.grid(row=8, column=4)
         self.drawBoard()
 
-
-
     def drawBoard(self):
         boardImage = Image.open('Photos/Board.gif')
-        player1Piece = Image.open('Blue.png')
+        player1Piece = Image.open('Red.png')
         player2Piece = Image.open('Red.png')
 
         player1_y_value = int(int(10 - self.player1_pos / 10) * 42 + 1)
 
         player1_x_value = int(self.player1_pos % 20)
         if (player1_x_value >= 10) and (player1_x_value <= 20):
-            player1_x_value = (20 - player1_x_value) * 40 + 20
+            player1_x_value = (20 - player1_x_value) * 40 +20
 
         elif (player1_x_value < 10):
-            player1_x_value = player1_x_value * 40 + 20
+            player1_x_value = player1_x_value * 40 -20
 
         else:
             player1_x_value = self.player1_pos
@@ -64,7 +62,7 @@ class Application(Frame):
             player2_x_value = (20 - player2_x_value) * 38 + 20
 
         elif (player2_x_value < 10):
-            player2_x_value = player2_x_value * 40 + 20
+            player2_x_value = player2_x_value * 40 -20
 
         else:
             player2_x_value = self.player2_pos
@@ -72,11 +70,6 @@ class Application(Frame):
         print(player2_x_value)
 
         boardImage.paste(player2Piece, (player2_x_value, player2_y_value), player2Piece)
-
-
-
-
-
 
         tkimage = ImageTk.PhotoImage(boardImage)
         panel1 = Label(self, image=tkimage)
@@ -121,7 +114,6 @@ class Application(Frame):
         w = Label(self, image=imageSmall)
         w.photo = imageSmall
         w.grid(row=8, column=2, rowspan = 4)
-
 
         if self.var1 >= 100 or self.var2 >= 100:
             self.var1 = 100
@@ -252,10 +244,10 @@ class Application(Frame):
             self.var2 = self.player2_pos
 
 
-
 class cell(object):
     def __init__(self):
         self.jump = False
+
 
 root = Tk()
 app = Application(root)
